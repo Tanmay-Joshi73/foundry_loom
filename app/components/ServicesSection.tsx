@@ -13,7 +13,7 @@ export default function ServicesSection() {
             <Kicker>What we do</Kicker>
             <h2>Six services, one narrative</h2>
           </div>
-          <p className="lede" style={{ margin: 0, maxWidth: '44ch' }}>
+          <p className="lede" style={{ margin: 0, maxWidth: '50ch' }}>
             LinkedIn is the core of most engagements. The other channels extend the same voice to where each audience actually spends time.
           </p>
         </div>
