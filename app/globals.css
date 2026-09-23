@@ -201,8 +201,8 @@
   /* Grid lives here — direct parent of .hero — so backdrop-filter can sample it */
   background-color: var(--bg);
   background-image:
-    repeating-linear-gradient(90deg, rgba(68, 41, 12, .22) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(0deg, rgba(68, 41, 12, .22) 0 1px, transparent 1px 28px);
+    repeating-linear-gradient(90deg, rgba(68, 41, 12, .32) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, rgba(68, 41, 12, .32) 0 1px, transparent 1px 28px);
 }
 
 .tfl[data-theme="dark"] .hero-shell {
@@ -216,11 +216,11 @@
   border-radius: var(--r-xl);
   overflow: hidden;
   /*
-   * Light theme: Rich deep pink/maroon with translucency so white text is crisp & legible and grid is visible.
+   * Light theme: Rich deep pink/maroon with translucency so white text is crisp & legible and grid is clearly visible.
    */
-  background-color: rgba(125, 42, 68, 0.84);
-  -webkit-backdrop-filter: blur(1.5px) saturate(1.2);
-  backdrop-filter: blur(1.5px) saturate(1.2);
+  background-color: rgba(122, 38, 64, 0.74);
+  -webkit-backdrop-filter: blur(1px) saturate(1.2);
+  backdrop-filter: blur(1px) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.24);
   box-shadow:
     inset 0 0 2px 1px rgba(255, 255, 255, 0.28),
