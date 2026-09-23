@@ -201,14 +201,14 @@
   /* Grid lives here — direct parent of .hero — so backdrop-filter can sample it */
   background-color: var(--bg);
   background-image:
-    repeating-linear-gradient(90deg, rgba(68, 41, 12, .32) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(0deg, rgba(68, 41, 12, .32) 0 1px, transparent 1px 28px);
+    repeating-linear-gradient(90deg, rgba(68, 41, 12, .32) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(0deg, rgba(68, 41, 12, .32) 0 1px, transparent 1px 22px);
 }
 
 .tfl[data-theme="dark"] .hero-shell {
   background-image:
-    repeating-linear-gradient(90deg, rgba(244, 238, 233, .30) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(0deg, rgba(244, 238, 233, .30) 0 1px, transparent 1px 28px);
+    repeating-linear-gradient(90deg, rgba(244, 238, 233, .30) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(0deg, rgba(244, 238, 233, .30) 0 1px, transparent 1px 22px);
 }
 
 .tfl .hero {
@@ -265,14 +265,14 @@
   position: relative;
   background-color: var(--bg);
   background-image:
-    repeating-linear-gradient(90deg, rgba(68, 41, 12, .07) 0 2px, transparent 2px 28px),
-    repeating-linear-gradient(0deg, rgba(68, 41, 12, .07) 0 3px, transparent 3px 28px);
+    repeating-linear-gradient(90deg, rgba(68, 41, 12, .07) 0 2px, transparent 2px 22px),
+    repeating-linear-gradient(0deg, rgba(68, 41, 12, .07) 0 3px, transparent 3px 22px);
 }
 
 .tfl[data-theme="dark"] .hero-to-services-grid {
   background-image:
-    repeating-linear-gradient(90deg, rgba(244, 238, 233, .18) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(0deg, rgba(244, 238, 233, .18) 0 1px, transparent 1px 28px);
+    repeating-linear-gradient(90deg, rgba(244, 238, 233, .18) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(0deg, rgba(244, 238, 233, .18) 0 1px, transparent 1px 22px);
 }
 
 .tfl .hero::after {
@@ -365,7 +365,7 @@
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: 1.25fr .75fr;
+  grid-template-columns: 1.15fr .85fr;
   gap: clamp(20px, 2.5vw, 40px);
   align-items: center;
   padding: clamp(4px, 1vh, 16px) clamp(20px, 2.5vw, 40px);
@@ -396,7 +396,7 @@
 
 .tfl .hero-mark {
   justify-self: end;
-  width: clamp(170px, 24vh + 3vw, 290px);
+  width: clamp(210px, 29vh + 4vw, 360px);
   max-height: 100%;
   position: relative;
 }
@@ -1421,7 +1421,7 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  padding: 36px;
+  padding: clamp(28px, 3.2vw, 42px);
   position: relative;
   background: rgba(255, 255, 255, 0.05) !important;
   border: 1.5px solid rgba(211, 161, 171, 0.45) !important;
