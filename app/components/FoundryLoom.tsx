@@ -18,19 +18,21 @@ import RsvpModal from './RsvpModal';
 type Theme = 'light' | 'dark';
 
 export default function FoundryLoom() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [menuOpen, setMenuOpen] = useState(false);
   const [tab, setTab] = useState(0);
   const [stickyOn, setStickyOn] = useState(false);
   const [rsvpFor, setRsvpFor] = useState<Event | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
 
-  // Restore theme from localStorage on mount (defaults to 'light', no OS theme detection)
+  // Restore theme from localStorage on mount (defaults to 'dark', no OS theme detection)
   useEffect(() => {
     try {
       const saved = localStorage.getItem('tfl-theme');
       if (saved === 'dark' || saved === 'light') {
         setTheme(saved);
+      } else {
+        setTheme('dark');
       }
     } catch {
       // localStorage may be unavailable in some environments

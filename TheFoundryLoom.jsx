@@ -141,7 +141,7 @@ async function postOrMail(endpoint, payload, subject, body) {
 }
 
 export default function TheFoundryLoom({ logoLight = LOGO_LIGHT, logoDark = LOGO_DARK, enquiryEndpoint = '/api/enquiry', rsvpEndpoint = '/api/rsvp' }) {
-  const [theme, setTheme] = useState(null);
+  const [theme, setTheme] = useState('dark');
   const [menuOpen, setMenuOpen] = useState(false);
   const [tab, setTab] = useState(0);
   const [stickyOn, setStickyOn] = useState(false);
@@ -153,7 +153,7 @@ export default function TheFoundryLoom({ logoLight = LOGO_LIGHT, logoDark = LOGO
   const dialogRef = useRef(null);
 
   useEffect(() => {
-    try { const t = localStorage.getItem('tfl-theme'); if (t) setTheme(t); } catch (e) {}
+    try { const t = localStorage.getItem('tfl-theme'); if (t) setTheme(t); else setTheme('dark'); } catch (e) {}
   }, []);
 
   useEffect(() => {
@@ -498,8 +498,8 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .btn-ghost:hover{border-color:var(--ink)}
 .tfl section{padding:96px 0}
 /* ---------- HERO ---------- */
-.tfl .hero-shell{padding:20px 0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;box-sizing:border-box}
-.tfl .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--maroon);color:var(--peach);flex:1;min-height:calc(100vh - 40px);min-height:calc(100dvh - 40px);display:flex;flex-direction:column;isolation:isolate}
+.tfl .hero-shell{padding:clamp(10px,1.6vh,18px) 0;height:100vh;height:100dvh;box-sizing:border-box;display:flex;flex-direction:column}
+.tfl .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--maroon);color:var(--peach);flex:1;height:100%;max-height:100%;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;box-sizing:border-box}
 .tfl .weave{position:absolute;inset:0;z-index:-2;opacity:.95;
   background:
    radial-gradient(120% 90% at 85% 20%, #9a3c57 0%, transparent 60%),
@@ -507,7 +507,7 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .hero-to-services-grid{position:relative;background-color:var(--bg);background-image:repeating-linear-gradient(90deg, rgba(68,41,12,.055) 0 2px, transparent 2px 28px),repeating-linear-gradient(0deg, rgba(68,41,12,.055) 0 3px, transparent 3px 28px)}
 .tfl[data-theme="dark"] .hero-to-services-grid{background-image:repeating-linear-gradient(90deg, rgba(244,238,233,.045) 0 2px, transparent 2px 28px),repeating-linear-gradient(0deg, rgba(244,238,233,.045) 0 3px, transparent 3px 28px)}
 .tfl .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;z-index:-1;background:linear-gradient(to top,rgba(40,20,8,.55),transparent)}
-.tfl .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 40px}
+.tfl .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(10px,1.8vh,20px) clamp(20px,2.5vw,40px);flex-shrink:0}
 .tfl .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--peach)}
 .tfl .brand img{width:54px;height:54px}
 .tfl .brand span{font:600 1.35rem/1 var(--serif);letter-spacing:.02em}
@@ -518,11 +518,11 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(244,238,233,.4);display:grid;place-items:center;color:var(--peach)}
 .tfl .icon-btn:hover{background:rgba(244,238,233,.14)}
 .tfl .menu-toggle{display:none;background:none;cursor:pointer}
-.tfl .hero-body{flex:1;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end;padding:40px 40px 34px}
-.tfl .hero-body p.intro{font-size:1.08rem;max-width:44ch;color:#EFDCE0;margin:22px 0 28px}
-.tfl .hero h1{color:var(--peach);font-size:clamp(3rem,7.6vw,6.4rem);font-weight:600;line-height:.95;letter-spacing:-.02em}
-.tfl .hero h1 em{font-style:italic;font-weight:500;color:var(--pink);display:block}
-.tfl .hero-mark{justify-self:end;width:min(360px,100%);position:relative}
+.tfl .hero-body{flex:1;min-height:0;display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(20px,2.5vw,40px);align-items:center;padding:clamp(4px,1vh,16px) clamp(20px,2.5vw,40px)}
+.tfl .hero-body p.intro{font-size:clamp(0.92rem,0.8vw + 0.5vh,1.08rem);max-width:48ch;color:#EFDCE0;margin:clamp(10px,1.4vh,18px) 0 clamp(16px,2vh,24px)}
+.tfl .hero h1{color:var(--peach);font-size:clamp(2rem,3.4vw + 2.2vh,4.1rem);font-weight:500;line-height:1.0;letter-spacing:-.02em}
+.tfl .hero h1 em{font-style:italic;font-weight:400;color:var(--pink);display:block;letter-spacing:-.01em}
+.tfl .hero-mark{justify-self:end;width:clamp(170px,24vh + 3vw,290px);max-height:100%;position:relative}
 .tfl .hero-mark img{width:100%;opacity:.95}
 .tfl .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .tfl .hero-actions .btn-ghost{color:var(--peach);border-color:rgba(244,238,233,.45)}
@@ -530,8 +530,8 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .thread path{fill:none;stroke:var(--pink);stroke-width:1.4;opacity:.55;stroke-dasharray:2400;stroke-dashoffset:2400;animation:tfl-draw 3.2s .3s cubic-bezier(.6,.1,.2,1) forwards}
 @keyframes tfl-draw{to{stroke-dashoffset:0}}
 @media (prefers-reduced-motion: reduce){.tfl .thread path{animation:none;stroke-dashoffset:0}}
-.tfl .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:0 40px 36px}
-.tfl .stat{border-top:2px solid rgba(244,238,233,.35);padding-top:16px;position:relative}
+.tfl .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.8vw,24px);padding:0 clamp(20px,2.5vw,40px) clamp(12px,1.8vh,24px);flex-shrink:0}
+.tfl .stat{border-top:2px solid rgba(244,238,233,.35);padding-top:clamp(8px,1.1vh,14px);position:relative}
 .tfl .stat::before{content:"";position:absolute;top:-2px;left:0;height:2px;width:0;background:var(--peach);animation:tfl-fill 1.4s 1.2s ease forwards}
 .tfl .stat:nth-child(2)::before{animation-delay:1.45s}
 .tfl .stat:nth-child(3)::before{animation-delay:1.7s}
