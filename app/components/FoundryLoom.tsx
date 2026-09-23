@@ -15,21 +15,23 @@ import ContactSection from './ContactSection';
 import Footer from './Footer';
 import RsvpModal from './RsvpModal';
 
-type Theme = 'light' | 'dark' | null;
+type Theme = 'light' | 'dark';
 
 export default function FoundryLoom() {
-  const [theme, setTheme] = useState<Theme>(null);
+  const [theme, setTheme] = useState<Theme>('light');
   const [menuOpen, setMenuOpen] = useState(false);
   const [tab, setTab] = useState(0);
   const [stickyOn, setStickyOn] = useState(false);
   const [rsvpFor, setRsvpFor] = useState<Event | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
 
-  // Restore theme from localStorage on mount
+  // Restore theme from localStorage on mount (defaults to 'light', no OS theme detection)
   useEffect(() => {
     try {
-      const t = localStorage.getItem('tfl-theme') as Theme;
-      if (t) setTheme(t);
+      const saved = localStorage.getItem('tfl-theme');
+      if (saved === 'dark' || saved === 'light') {
+        setTheme(saved);
+      }
     } catch {
       // localStorage may be unavailable in some environments
     }
@@ -47,13 +49,16 @@ export default function FoundryLoom() {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    const dark = theme
-      ? theme === 'dark'
-      : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next: Theme = dark ? 'light' : 'dark';
-    setTheme(next);
-    try { localStorage.setItem('tfl-theme', next); } catch { /* ignore */ }
-  }, [theme]);
+    setTheme((curr) => {
+      const next: Theme = curr === 'dark' ? 'light' : 'dark';
+      try {
+        localStorage.setItem('tfl-theme', next);
+      } catch {
+        /* ignore */
+      }
+      return next;
+    });
+  }, []);
 
   const openRsvp = useCallback((ev: Event) => {
     setRsvpFor(ev);
@@ -64,14 +69,16 @@ export default function FoundryLoom() {
   }, []);
 
   return (
-    <div className="tfl" data-theme={theme ?? undefined}>
-      <StickyNav show={stickyOn} />
+    <div className="tfl" data-theme={theme}>
+      <StickyNav show={stickyOn} theme={theme} onToggleTheme={toggleTheme} />
 
       <HeroSection
         menuOpen={menuOpen}
         onMenuToggle={() => setMenuOpen((o) => !o)}
         onMenuClose={() => setMenuOpen(false)}
         heroRef={heroRef}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <main>
@@ -85,7 +92,7 @@ export default function FoundryLoom() {
         <ContactSection />
       </main>
 
-      <Footer onToggleTheme={toggleTheme} />
+      <Footer onToggleTheme={toggleTheme} theme={theme} />
 
       <RsvpModal event={rsvpFor} onClose={closeRsvp} />
     </div>

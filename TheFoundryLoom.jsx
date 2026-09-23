@@ -171,8 +171,7 @@ export default function TheFoundryLoom({ logoLight = LOGO_LIGHT, logoDark = LOGO
   }, [rsvpFor]);
 
   const toggleTheme = () => {
-    const dark = theme ? theme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const next = dark ? 'light' : 'dark';
+    const next = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
     try { localStorage.setItem('tfl-theme', next); } catch (e) {}
   };
@@ -471,9 +470,7 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme: dark){.tfl:not([data-theme="light"]){
-    --bg:#1F140A; --surface:#2A1B0F; --surface-2:#251710; --ink:#F4EEE9; --text:#E4D9D1; --muted:#C4BAB3; --line:#433024; --accent:#D3A1AB; --on-accent:#44290C;
-  }}
+
 .tfl[data-theme="dark"]{
   --bg:#1F140A; --surface:#2A1B0F; --surface-2:#251710; --ink:#F4EEE9; --text:#E4D9D1; --muted:#C4BAB3; --line:#433024; --accent:#D3A1AB; --on-accent:#44290C;
 }
@@ -650,8 +647,7 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .form-note.ok{color:#3f6b3a}
 .tfl .form-note.err{color:#a3243b}
 .tfl[data-theme="dark"] .form-note.ok{color:#9bc790}
-@media (prefers-color-scheme: dark){.tfl:not([data-theme="light"]) .form-note.ok{color:#9bc790}
-.tfl:not([data-theme="light"]) .form-note.err{color:#f0a3b3}}
+.tfl[data-theme="dark"] .form-note.err{color:#f0a3b3}
 .tfl .inbox{margin-top:40px}
 .tfl .inbox table{width:100%;border-collapse:collapse;font-size:.93rem}
 .tfl .inbox th,.tfl .inbox td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -733,7 +729,7 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .sticky ul a:hover{background:rgba(127,46,69,.08)}
 .tfl[data-theme="dark"] .sticky{background:rgba(31,20,10,.7);border-color:rgba(244,238,233,.14)}
 .tfl[data-theme="dark"] .sticky .brand,.tfl[data-theme="dark"] .sticky ul a{color:var(--peach)}
-@media (prefers-color-scheme: dark){.tfl:not([data-theme="light"]) .sticky{background:rgba(31,20,10,.7);border-color:rgba(244,238,233,.14)}.tfl:not([data-theme="light"]) .sticky .brand,.tfl:not([data-theme="light"]) .sticky ul a{color:var(--peach)}}
+
 @media (max-width:1020px){.tfl .sticky ul{display:none}}
 @media (prefers-reduced-motion: reduce){.tfl .sticky,.tfl .sticky.show{transition:none}}
 

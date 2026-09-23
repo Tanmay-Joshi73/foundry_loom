@@ -6,9 +6,10 @@ import Icon from './Icon';
 
 interface FooterProps {
   onToggleTheme: () => void;
+  theme?: 'light' | 'dark';
 }
 
-export default function Footer({ onToggleTheme }: FooterProps) {
+export default function Footer({ onToggleTheme, theme }: FooterProps) {
   return (
     <footer>
       <div className="wrap">
@@ -36,8 +37,13 @@ export default function Footer({ onToggleTheme }: FooterProps) {
         </div>
         <div className="legal">
           <span>© {new Date().getFullYear()} The Foundry Loom. All rights reserved.</span>
-          <button className="theme-toggle" type="button" onClick={onToggleTheme}>
-            Switch theme
+          <button
+            className="theme-toggle"
+            type="button"
+            onClick={onToggleTheme}
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
           </button>
         </div>
       </div>

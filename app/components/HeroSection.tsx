@@ -10,9 +10,18 @@ interface HeroSectionProps {
   onMenuToggle: () => void;
   onMenuClose: () => void;
   heroRef: React.RefObject<HTMLElement | null>;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
-export default function HeroSection({ menuOpen, onMenuToggle, onMenuClose, heroRef }: HeroSectionProps) {
+export default function HeroSection({
+  menuOpen,
+  onMenuToggle,
+  onMenuClose,
+  heroRef,
+  theme,
+  onToggleTheme,
+}: HeroSectionProps) {
   return (
     <div className="wrap hero-shell">
       <header className="hero" id="top" ref={heroRef}>
@@ -21,7 +30,13 @@ export default function HeroSection({ menuOpen, onMenuToggle, onMenuClose, heroR
           <path d="M-20 600 C 180 640, 340 520, 520 470 S 820 380, 900 250 S 1040 60, 1220 90" />
         </svg>
 
-        <Nav menuOpen={menuOpen} onMenuToggle={onMenuToggle} onMenuClose={onMenuClose} />
+        <Nav
+          menuOpen={menuOpen}
+          onMenuToggle={onMenuToggle}
+          onMenuClose={onMenuClose}
+          theme={theme}
+          onToggleTheme={onToggleTheme}
+        />
 
         <div className="hero-body">
           <div>

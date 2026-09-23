@@ -4,13 +4,17 @@ import Image from 'next/image';
 import { NAV, SITE } from '@/app/lib/data';
 import Icon from './Icon';
 
+import ThemeToggle from './ThemeToggle';
+
 interface NavProps {
   menuOpen: boolean;
   onMenuToggle: () => void;
   onMenuClose: () => void;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
-export default function Nav({ menuOpen, onMenuToggle, onMenuClose }: NavProps) {
+export default function Nav({ menuOpen, onMenuToggle, onMenuClose, theme, onToggleTheme }: NavProps) {
   return (
     <nav className="nav" aria-label="Main">
       <a className="brand" href="#top">
@@ -45,6 +49,7 @@ export default function Nav({ menuOpen, onMenuToggle, onMenuClose }: NavProps) {
         >
           <Icon name="youtube" size={17} />
         </a>
+        <ThemeToggle theme={theme} onToggle={onToggleTheme} />
         <a className="btn btn-light cta-top" href="#contact" style={{ padding: '10px 20px' }}>
           Book a consultation
         </a>

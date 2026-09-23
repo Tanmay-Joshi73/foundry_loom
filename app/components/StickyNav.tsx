@@ -2,19 +2,27 @@
 
 import Image from 'next/image';
 import { NAV } from '@/app/lib/data';
+import ThemeToggle from './ThemeToggle';
 
 interface StickyNavProps {
   show: boolean;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
-export default function StickyNav({ show }: StickyNavProps) {
+export default function StickyNav({ show, theme, onToggleTheme }: StickyNavProps) {
   return (
     <div
       className={`sticky${show ? ' show' : ''}`}
       aria-hidden={!show}
     >
       <a className="brand" href="#top" tabIndex={show ? 0 : -1}>
-        <Image src="/logo-dark.png" alt="" width={38} height={38} />
+        <Image
+          src={theme === 'dark' ? '/logo-light.png' : '/logo-dark.png'}
+          alt=""
+          width={38}
+          height={38}
+        />
         <span>The Foundry Loom</span>
       </a>
       <ul>
@@ -24,14 +32,22 @@ export default function StickyNav({ show }: StickyNavProps) {
           </li>
         ))}
       </ul>
-      <a
-        className="btn btn-primary"
-        href="#contact"
-        tabIndex={show ? 0 : -1}
-        style={{ padding: '10px 20px' }}
-      >
-        Book a call
-      </a>
+      <div className="sticky-actions">
+        <ThemeToggle
+          theme={theme}
+          onToggle={onToggleTheme}
+          className="sticky-theme-toggle"
+          tabIndex={show ? 0 : -1}
+        />
+        <a
+          className="btn btn-primary"
+          href="#contact"
+          tabIndex={show ? 0 : -1}
+          style={{ padding: '10px 20px' }}
+        >
+          Book a call
+        </a>
+      </div>
     </div>
   );
 }
