@@ -37,14 +37,6 @@ export default function Footer({ onToggleTheme, theme }: FooterProps) {
         </div>
         <div className="legal">
           <span>© {new Date().getFullYear()} The Foundry Loom. All rights reserved.</span>
-          <button
-            className="theme-toggle"
-            type="button"
-            onClick={onToggleTheme}
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-          >
-            {theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode'}
-          </button>
         </div>
       </div>
     </footer>

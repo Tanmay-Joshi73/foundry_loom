@@ -1151,38 +1151,52 @@
 }
 
 .tfl[data-theme="dark"] .form-note.err {
-  color: #f0a3b3
+  color: #f0a3b3;
+}
+
+/* ---------- TITLES & BUTTONS CAPITALIZATION ---------- */
+.tfl h1,
+.tfl h2,
+.tfl h3,
+.tfl h4,
+.tfl h5,
+.tfl h6,
+.tfl .kicker,
+.tfl .btn,
+.tfl button,
+.tfl .tab {
+  text-transform: capitalize;
 }
 
 /* ---------- FOOTER ---------- */
 .tfl footer {
   background: var(--maroon);
   color: var(--peach);
-  padding: 70px 0 40px;
-  margin-top: 40px
+  padding: 32px 0 20px;
+  margin-top: 24px;
 }
 
 .tfl .foot {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 40px;
-  align-items: start
+  gap: 28px;
+  align-items: start;
 }
 
 .tfl .foot img {
-  width: 130px
+  width: 80px;
 }
 
 .tfl .foot .tag {
-  font: italic 500 2rem/1.15 var(--serif);
-  max-width: 16ch;
-  margin-top: 18px
+  font: italic 500 1.25rem/1.2 var(--serif);
+  max-width: 18ch;
+  margin-top: 8px;
 }
 
 .tfl .foot h4 {
-  font-size: .9rem;
-  margin: 0 0 12px;
-  color: var(--pink)
+  font-size: .88rem;
+  margin: 0 0 8px;
+  color: var(--pink);
 }
 
 .tfl .foot ul {
@@ -1190,38 +1204,30 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 8px
+  gap: 6px;
 }
 
 .tfl .foot a {
   text-decoration: none;
-  color: var(--peach)
+  color: var(--peach);
 }
 
 .tfl .foot a:hover {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .tfl .legal {
   border-top: 1px solid rgba(244, 238, 233, .2);
-  margin-top: 50px;
-  padding-top: 22px;
+  margin-top: 24px;
+  padding-top: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  font-size: .85rem;
-  color: #EAD3D8
-}
-
-.tfl .theme-toggle {
-  background: none;
-  border: 1px solid rgba(244, 238, 233, .35);
-  color: var(--peach);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font: 500 .85rem var(--sans);
-  cursor: pointer
+  font-size: .82rem;
+  color: #EAD3D8;
+  text-align: center;
 }
 
 /* ---------- DIALOG ---------- */
@@ -1466,16 +1472,7 @@
 }
 
 .tfl .work::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  pointer-events: none;
-  width: 460px;
-  height: 460px;
-  left: -160px;
-  bottom: -120px;
-  background: radial-gradient(circle, rgba(211, 161, 171, .3), transparent 70%)
+  display: none;
 }
 
 .tfl .case {
