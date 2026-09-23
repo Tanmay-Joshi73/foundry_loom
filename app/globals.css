@@ -192,7 +192,12 @@
 
 /* ---------- HERO ---------- */
 .tfl .hero-shell {
-  padding: 20px 0 0
+  padding: 20px 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .tfl .hero {
@@ -201,7 +206,9 @@
   overflow: hidden;
   background: var(--maroon);
   color: var(--peach);
-  min-height: 680px;
+  flex: 1;
+  min-height: calc(100vh - 40px);
+  min-height: calc(100dvh - 40px);
   display: flex;
   flex-direction: column;
   isolation: isolate
@@ -322,7 +329,7 @@
   display: grid;
   grid-template-columns: 1.25fr .75fr;
   gap: 40px;
-  align-items: end;
+  align-items: center;
   padding: 40px 40px 34px
 }
 
@@ -1402,24 +1409,12 @@
   isolation: isolate
 }
 
-.tfl .work::before,
 .tfl .work::after {
   content: "";
   position: absolute;
   z-index: -1;
   border-radius: 50%;
-  pointer-events: none
-}
-
-.tfl .work::before {
-  width: 560px;
-  height: 560px;
-  right: -140px;
-  top: 90px;
-  background: radial-gradient(circle, rgba(127, 46, 69, .9), transparent 68%)
-}
-
-.tfl .work::after {
+  pointer-events: none;
   width: 460px;
   height: 460px;
   left: -160px;

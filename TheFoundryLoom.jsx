@@ -498,8 +498,8 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .btn-ghost:hover{border-color:var(--ink)}
 .tfl section{padding:96px 0}
 /* ---------- HERO ---------- */
-.tfl .hero-shell{padding:20px 0 0}
-.tfl .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--maroon);color:var(--peach);min-height:680px;display:flex;flex-direction:column;isolation:isolate}
+.tfl .hero-shell{padding:20px 0;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;box-sizing:border-box}
+.tfl .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--maroon);color:var(--peach);flex:1;min-height:calc(100vh - 40px);min-height:calc(100dvh - 40px);display:flex;flex-direction:column;isolation:isolate}
 .tfl .weave{position:absolute;inset:0;z-index:-2;opacity:.95;
   background:
    radial-gradient(120% 90% at 85% 20%, #9a3c57 0%, transparent 60%),
@@ -708,9 +708,7 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .persona .who{margin:10px 8px auto}
 .tfl .persona:nth-child(3) .cap{background:rgba(255,255,255,.26);border-color:rgba(255,255,255,.5)}
 .tfl .work{position:relative;overflow:hidden;isolation:isolate}
-.tfl .work::before,.tfl .work::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none}
-.tfl .work::before{width:560px;height:560px;right:-140px;top:90px;background:radial-gradient(circle,rgba(127,46,69,.9),transparent 68%)}
-.tfl .work::after{width:460px;height:460px;left:-160px;bottom:-120px;background:radial-gradient(circle,rgba(211,161,171,.3),transparent 70%)}
+.tfl .work::after{content:"";position:absolute;z-index:-1;border-radius:50%;pointer-events:none;width:460px;height:460px;left:-160px;bottom:-120px;background:radial-gradient(circle,rgba(211,161,171,.3),transparent 70%)}
 .tfl .case{background:rgba(244,238,233,.05);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
 .tfl .metric{background:rgba(244,238,233,.07);border:1px solid rgba(244,238,233,.14)}
 .tfl .metric.wide{background:rgba(127,46,69,.78);border-color:rgba(244,238,233,.2)}
