@@ -24,7 +24,47 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <div className="wrap hero-shell">
+      {/* Hidden SVG filter definition for liquid glass effect */}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden', pointerEvents: 'none' }}
+      >
+        <defs>
+          <filter id="glass-filter-hero" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.65 0.75"
+              numOctaves="1"
+              seed="2"
+              result="noise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="noise"
+              scale="6"
+              xChannelSelector="R"
+              yChannelSelector="G"
+              result="displaced"
+            />
+            <feGaussianBlur stdDeviation="18" in="displaced" result="blurred" />
+          </filter>
+        </defs>
+      </svg>
+
       <header className="hero" id="top" ref={heroRef}>
+        {/* Glass surface filter overlay — applies the SVG filter as backdrop */}
+        <svg
+          className="glass-surface__filter"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <filter id="glass-filter-hero-surface" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65 0.75" numOctaves="1" seed="2" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+            <feGaussianBlur stdDeviation="18" in="displaced" result="blurred" />
+          </filter>
+        </svg>
         <div className="weave" aria-hidden="true" />
         <svg className="thread" viewBox="0 0 1200 700" preserveAspectRatio="none" aria-hidden="true">
           <path d="M-20 600 C 180 640, 340 520, 520 470 S 820 380, 900 250 S 1040 60, 1220 90" />

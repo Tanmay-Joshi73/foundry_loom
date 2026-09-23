@@ -198,13 +198,34 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  /* Grid lives here — direct parent of .hero — so backdrop-filter can sample it */
+  background-color: var(--bg);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(68, 41, 12, .14) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, rgba(68, 41, 12, .14) 0 1px, transparent 1px 28px);
+}
+
+.tfl[data-theme="dark"] .hero-shell {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(244, 238, 233, .30) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, rgba(244, 238, 233, .30) 0 1px, transparent 1px 28px);
 }
 
 .tfl .hero {
   position: relative;
   border-radius: var(--r-xl);
   overflow: hidden;
-  background: var(--maroon);
+  /*
+   * Uniform translucent pink: balanced opacity so background grid is clearly visible through the container.
+   */
+  background-color: rgba(215, 95, 135, 0.28);
+  -webkit-backdrop-filter: blur(1px) saturate(1.25);
+  backdrop-filter: blur(1px) saturate(1.25);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    inset 0 0 2px 1px rgba(255, 255, 255, 0.28),
+    inset 0 0 16px 2px rgba(255, 255, 255, 0.08),
+    0 24px 60px -12px rgba(31, 20, 10, 0.28);
   color: var(--peach);
   flex: 1;
   height: 100%;
@@ -212,44 +233,55 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  isolation: isolate;
   box-sizing: border-box;
 }
 
+/* Dark theme hero: luminous translucent pink over dark background */
+.tfl[data-theme="dark"] .hero {
+  background-color: rgba(215, 80, 125, 0.32);
+}
+
+/* Disabled uneven gradients so hero color is completely uniform */
+.tfl .hero::before {
+  display: none;
+}
+
 .tfl .weave {
+  display: none;
+}
+
+/* Hidden SVG glass filter element sitting inside .hero */
+.tfl .glass-surface__filter {
+  pointer-events: none;
+  opacity: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
   position: absolute;
   inset: 0;
-  z-index: -2;
-  opacity: .95;
-  background:
-    radial-gradient(120% 90% at 85% 20%, #9a3c57 0%, transparent 60%),
-    linear-gradient(160deg, #7F2E45 0%, #5a1f31 70%, #44290C 120%)
 }
 
 .tfl .hero-to-services-grid {
   position: relative;
   background-color: var(--bg);
   background-image:
-    repeating-linear-gradient(90deg, rgba(68, 41, 12, .055) 0 2px, transparent 2px 28px),
-    repeating-linear-gradient(0deg, rgba(68, 41, 12, .055) 0 3px, transparent 3px 28px);
+    repeating-linear-gradient(90deg, rgba(68, 41, 12, .07) 0 2px, transparent 2px 28px),
+    repeating-linear-gradient(0deg, rgba(68, 41, 12, .07) 0 3px, transparent 3px 28px);
 }
 
 .tfl[data-theme="dark"] .hero-to-services-grid {
   background-image:
-    repeating-linear-gradient(90deg, rgba(244, 238, 233, .045) 0 2px, transparent 2px 28px),
-    repeating-linear-gradient(0deg, rgba(244, 238, 233, .045) 0 3px, transparent 3px 28px);
+    repeating-linear-gradient(90deg, rgba(244, 238, 233, .18) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(0deg, rgba(244, 238, 233, .18) 0 1px, transparent 1px 28px);
 }
 
 .tfl .hero::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 55%;
-  z-index: -1;
-  background: linear-gradient(to top, rgba(40, 20, 8, .55), transparent)
+  display: none;
 }
 
 .tfl .nav {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -328,6 +360,8 @@
 }
 
 .tfl .hero-body {
+  position: relative;
+  z-index: 2;
   flex: 1;
   min-height: 0;
   display: grid;
@@ -390,8 +424,8 @@
   right: 0;
   top: 0;
   height: 100%;
-  z-index: -1;
-  pointer-events: none
+  pointer-events: none;
+  z-index: 1;
 }
 
 .tfl .thread path {
@@ -418,6 +452,8 @@
 }
 
 .tfl .stats {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(14px, 1.8vw, 24px);
@@ -1379,11 +1415,29 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  padding: 36px
+  padding: 36px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1.5px solid rgba(211, 161, 171, 0.45) !important;
+  -webkit-backdrop-filter: blur(3px) saturate(120%) !important;
+  backdrop-filter: blur(3px) saturate(120%) !important;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 210, 220, 0.45),
+    inset 0 -1px 0 rgba(120, 45, 65, 0.28),
+    inset 0 0 24px rgba(211, 161, 171, 0.08),
+    0 8px 32px rgba(31, 20, 10, 0.25) !important;
+  overflow: hidden;
+  isolation: isolate
+}
+
+.tfl .hero-mark::before {
+  display: none;
 }
 
 .tfl .hero-mark img {
-  width: 86%
+  width: 86%;
+  position: relative;
+  z-index: 1
 }
 
 .tfl .feature .cap,
