@@ -571,9 +571,9 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .persona .who{font-size:.85rem;font-weight:600;opacity:.85;margin-bottom:auto}
 /* ---------- SERVICES ---------- */
 .tfl .head-row{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px;flex-wrap:wrap}
-.tfl .services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
-.tfl .svc{padding:30px 28px 34px 0;border-bottom:1px solid var(--line)}
-.tfl .svc:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.tfl .services{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 36px}
+.tfl .svc{padding:0}
+.tfl .svc:not(:nth-child(3n+1)){padding-left:0}
 .tfl .svc .ic{width:46px;height:46px;border-radius:50%;background:var(--maroon);color:var(--peach);display:grid;place-items:center;margin-bottom:18px}
 .tfl .svc h3{font-size:1.55rem;margin-bottom:8px}
 .tfl .svc p{color:var(--muted);margin:0;font-size:.97rem}
@@ -679,9 +679,8 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 .tfl .stats{grid-template-columns:repeat(2,1fr)}
 .tfl .about,.tfl .who-top,.tfl .case,.tfl .rooms,.tfl .contact{grid-template-columns:1fr}
 .tfl .steps{grid-template-columns:repeat(2,1fr)}
-.tfl .services{grid-template-columns:1fr 1fr}
-.tfl .svc,.tfl .svc:not(:nth-child(3n+1)){padding:26px 20px;border-left:none}
-.tfl .svc:nth-child(even){border-left:1px solid var(--line)}
+.tfl .services{grid-template-columns:1fr 1fr;gap:32px 24px}
+.tfl .svc,.tfl .svc:not(:nth-child(3n+1)),.tfl .svc:nth-child(even){padding:0;border-left:none}
 .tfl .foot{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.tfl section{padding:68px 0}
 .tfl .nav{padding:20px}

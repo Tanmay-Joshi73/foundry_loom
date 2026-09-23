@@ -668,17 +668,15 @@
 .tfl .services {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--line)
+  gap: 40px 36px;
 }
 
 .tfl .svc {
-  padding: 30px 28px 34px 0;
-  border-bottom: 1px solid var(--line)
+  padding: 0;
 }
 
 .tfl .svc:not(:nth-child(3n+1)) {
-  padding-left: 28px;
-  border-left: 1px solid var(--line)
+  padding-left: 0;
 }
 
 .tfl .svc .ic {
@@ -1261,17 +1259,15 @@
   }
 
   .tfl .services {
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
   }
 
   .tfl .svc,
-  .tfl .svc:not(:nth-child(3n+1)) {
-    padding: 26px 20px;
-    border-left: none
-  }
-
+  .tfl .svc:not(:nth-child(3n+1)),
   .tfl .svc:nth-child(even) {
-    border-left: 1px solid var(--line)
+    padding: 0;
+    border-left: none;
   }
 
   .tfl .foot {
