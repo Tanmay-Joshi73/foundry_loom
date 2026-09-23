@@ -500,12 +500,12 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Cormorant+Gar
 /* ---------- HERO ---------- */
 .tfl .hero-shell{padding:20px 0 0}
 .tfl .hero{position:relative;border-radius:var(--r-xl);overflow:hidden;background:var(--maroon);color:var(--peach);min-height:680px;display:flex;flex-direction:column;isolation:isolate}
-.tfl .weave{position:absolute;inset:0;z-index:-2;opacity:.55;
+.tfl .weave{position:absolute;inset:0;z-index:-2;opacity:.95;
   background:
-   repeating-linear-gradient(90deg, rgba(244,238,233,.07) 0 2px, transparent 2px 14px),
-   repeating-linear-gradient(0deg, rgba(68,41,12,.18) 0 6px, transparent 6px 14px),
    radial-gradient(120% 90% at 85% 20%, #9a3c57 0%, transparent 60%),
    linear-gradient(160deg,#7F2E45 0%,#5a1f31 70%,#44290C 120%)}
+.tfl .hero-to-services-grid{position:relative;background-color:var(--bg);background-image:repeating-linear-gradient(90deg, rgba(68,41,12,.055) 0 2px, transparent 2px 28px),repeating-linear-gradient(0deg, rgba(68,41,12,.055) 0 3px, transparent 3px 28px)}
+.tfl[data-theme="dark"] .hero-to-services-grid{background-image:repeating-linear-gradient(90deg, rgba(244,238,233,.045) 0 2px, transparent 2px 28px),repeating-linear-gradient(0deg, rgba(244,238,233,.045) 0 3px, transparent 3px 28px)}
 .tfl .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;z-index:-1;background:linear-gradient(to top,rgba(40,20,8,.55),transparent)}
 .tfl .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 40px}
 .tfl .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--peach)}

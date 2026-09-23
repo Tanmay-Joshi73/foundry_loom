@@ -72,19 +72,22 @@ export default function FoundryLoom() {
     <div className="tfl" data-theme={theme}>
       <StickyNav show={stickyOn} theme={theme} onToggleTheme={toggleTheme} />
 
-      <HeroSection
-        menuOpen={menuOpen}
-        onMenuToggle={() => setMenuOpen((o) => !o)}
-        onMenuClose={() => setMenuOpen(false)}
-        heroRef={heroRef}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-      />
-
       <main>
-        <AboutSection />
-        <WhoSection />
-        <ServicesSection />
+        <div className="hero-to-services-grid">
+          <HeroSection
+            menuOpen={menuOpen}
+            onMenuToggle={() => setMenuOpen((o) => !o)}
+            onMenuClose={() => setMenuOpen(false)}
+            heroRef={heroRef}
+            theme={theme}
+            onToggleTheme={toggleTheme}
+          />
+
+          <AboutSection />
+          <WhoSection />
+          <ServicesSection />
+        </div>
+
         <WorkSection tab={tab} onTabChange={setTab} />
         <RoomsSection />
         <ProcessSection />

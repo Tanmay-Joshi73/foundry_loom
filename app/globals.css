@@ -211,12 +211,24 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  opacity: .55;
+  opacity: .95;
   background:
-    repeating-linear-gradient(90deg, rgba(244, 238, 233, .07) 0 2px, transparent 2px 14px),
-    repeating-linear-gradient(0deg, rgba(68, 41, 12, .18) 0 6px, transparent 6px 14px),
     radial-gradient(120% 90% at 85% 20%, #9a3c57 0%, transparent 60%),
     linear-gradient(160deg, #7F2E45 0%, #5a1f31 70%, #44290C 120%)
+}
+
+.tfl .hero-to-services-grid {
+  position: relative;
+  background-color: var(--bg);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(68, 41, 12, .055) 0 2px, transparent 2px 28px),
+    repeating-linear-gradient(0deg, rgba(68, 41, 12, .055) 0 3px, transparent 3px 28px);
+}
+
+.tfl[data-theme="dark"] .hero-to-services-grid {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(244, 238, 233, .045) 0 2px, transparent 2px 28px),
+    repeating-linear-gradient(0deg, rgba(244, 238, 233, .045) 0 3px, transparent 3px 28px);
 }
 
 .tfl .hero::after {
